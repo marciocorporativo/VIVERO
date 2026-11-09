@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel administrativo | VIVERO</title>
+
+    <meta
+        name="description"
+        content="Painel administrativo da loja VIVERO."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="dashboard-sidebar">
+
+            <div class="dashboard-brand">
+                <a href="index.html">
+                    <img src="assets/logo-vivero.png" alt="VIVERO">
+                </a>
+
+                <span>ADMINISTRAÇÃO</span>
+            </div>
+
+
+            <nav class="dashboard-navigation">
+
+                <span class="dashboard-nav-label">
+                    MENU PRINCIPAL
+                </span>
+
+                <a href="#visao-geral" class="dashboard-nav-link active">
+                    <span class="dashboard-nav-icon">⌂</span>
+                    Visão geral
+                </a>
+
+                <a href="#produtos" class="dashboard-nav-link">
+                    <span class="dashboard-nav-icon">▤</span>
+                    Produtos
+                </a>
+
+                <a href="#imagens" class="dashboard-nav-link">
+                    <span class="dashboard-nav-icon">▧</span>
+                    Imagens
+                </a>
+
+                <a href="#pedidos" class="dashboard-nav-link">
+                    <span class="dashboard-nav-icon">▣</span>
+                    Pedidos
+                </a>
+
+
+                <span class="dashboard-nav-label dashboard-nav-label-secondary">
+                    OUTROS
+                </span>
+
+                <a href="#configuracoes" class="dashboard-nav-link">
+                    <span class="dashboard-nav-icon">⚙</span>
+                    Configurações
+                </a>
+
+            </nav>
+
+
+            <div class="dashboard-sidebar-footer">
+
+                <a href="index.html" class="dashboard-store-link">
+                    ↗ VISUALIZAR LOJA
+                </a>
+
+                <button
+                    type="button"
+                    id="admin-logout-button"
+                    class="dashboard-logout-button"
+                >
+                    ↪ SAIR DA CONTA
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+
+                <div>
+                    <span class="dashboard-header-eyebrow">
+                        VIVERO / ADMINISTRAÇÃO
+                    </span>
+
+                    <h1>Painel administrativo</h1>
+                </div>
+
+                <div class="dashboard-header-status">
+                    <span class="dashboard-status-indicator"></span>
+                    <span>ÁREA RESTRITA</span>
+                </div>
+
+            </header>
+
+
+            <!-- VISÃO GERAL -->
+
+            <section
+                id="visao-geral"
+                class="dashboard-section"
+            >
+
+                <div class="dashboard-section-heading">
+
+                    <div>
+                        <span class="dashboard-eyebrow">
+                            VISÃO GERAL
+                        </span>
+
+                        <h2>Bem-vindo à VIVERO.</h2>
+
+                        <p>
+                            Gerencie os produtos, imagens e pedidos
+                            da sua loja em um só lugar.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- INDICADORES -->
+
+                <div class="dashboard-overview-grid">
+
+                    <article class="dashboard-stat-card">
+
+                        <span class="dashboard-stat-label">
+                            PRODUTOS CADASTRADOS
+                        </span>
+
+                        <strong id="dashboard-product-count">
+                            —
+                        </strong>
+
+                        <span class="dashboard-stat-description">
+                            Produtos na loja
+                        </span>
+
+                    </article>
+
+
+                    <article class="dashboard-stat-card">
+
+                        <span class="dashboard-stat-label">
+                            PEDIDOS RECEBIDOS
+                        </span>
+
+                        <strong id="dashboard-order-count">
+                            —
+                        </strong>
+
+                        <span class="dashboard-stat-description">
+                            Pedidos registrados
+                        </span>
+
+                    </article>
+
+
+                    <article class="dashboard-stat-card">
+
+                        <span class="dashboard-stat-label">
+                            IMAGENS CADASTRADAS
+                        </span>
+
+                        <strong id="dashboard-image-count">
+                            —
+                        </strong>
+
+                        <span class="dashboard-stat-description">
+                            Imagens dos produtos
+                        </span>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ATALHOS -->
+
+                <div class="dashboard-quick-access">
+
+                    <span class="dashboard-eyebrow">
+                        ACESSO RÁPIDO
+                    </span>
+
+                    <div class="dashboard-quick-grid">
+
+                        <a href="#produtos" class="dashboard-quick-card">
+                            <span>01 / PRODUTOS</span>
+                            <strong>Gerenciar produtos ↗</strong>
+                            <p>Cadastre e edite os produtos da loja.</p>
+                        </a>
+
+                        <a href="#imagens" class="dashboard-quick-card">
+                            <span>02 / IMAGENS</span>
+                            <strong>Gerenciar imagens ↗</strong>
+                            <p>Organize as fotografias dos produtos.</p>
+                        </a>
+
+                        <a href="#pedidos" class="dashboard-quick-card">
+                            <span>03 / PEDIDOS</span>
+                            <strong>Consultar pedidos ↗</strong>
+                            <p>Acompanhe os pedidos realizados.</p>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ÁREAS QUE SERÃO IMPLEMENTADAS -->
+
+            <section id="produtos" class="dashboard-placeholder">
+                <span>01 / CATÁLOGO</span>
+                <h2>Produtos</h2>
+                <p>Área de gerenciamento de produtos.</p>
+            </section>
+
+            <section id="imagens" class="dashboard-placeholder">
+                <span>02 / ARQUIVOS</span>
+                <h2>Imagens</h2>
+                <p>Área de gerenciamento de imagens.</p>
+            </section>
+
+            <section id="pedidos" class="dashboard-placeholder">
+                <span>03 / VENDAS</span>
+                <h2>Pedidos</h2>
+                <p>Área de gerenciamento de pedidos.</p>
+            </section>
+
+            <section id="configuracoes" class="dashboard-placeholder">
+                <span>04 / PREFERÊNCIAS</span>
+                <h2>Configurações</h2>
+                <p>Área de configurações da loja.</p>
+            </section>
+
+
+            <footer class="dashboard-footer">
+                © 2026 VIVERO — PAINEL ADMINISTRATIVO.
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- BIBLIOTECA DO SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- CONEXÃO COM O SUPABASE -->
+
+    <script src="supabase.js"></script>
+
+    <!-- FUNCIONALIDADES DO PAINEL -->
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

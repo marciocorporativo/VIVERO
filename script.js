@@ -11,53 +11,7 @@
 // Os nomes e preços poderão ser alterados
 // quando definirmos o catálogo definitivo.
 
-const products = [
-    {
-        id: 1,
-        name: "Bolsa Horizonte",
-        category: "bolsas",
-        categoryLabel: "BOLSA",
-        price: 149.90,
-        color: "#858B52",
-        visual: "bag",
-        image: "",
-        images: []
-    },
-    {
-        id: 2,
-        name: "Bolsa Travessia",
-        category: "bolsas",
-        categoryLabel: "BOLSA",
-        price: 129.90,
-        color: "#C66B4E",
-        visual: "bag",
-        image: "",
-        images: []
-    },
-    {
-        id: 3,
-        name: "Organizador Rota",
-        category: "organizadores",
-        categoryLabel: "ORGANIZADOR",
-        price: 69.90,
-        color: "#344D3B",
-        visual: "pouch",
-        image: "",
-        images: []
-    },
-    {
-        id: 4,
-        name: "Nécessaire Campo",
-        category: "organizadores",
-        categoryLabel: "NÉCESSAIRE",
-        price: 59.90,
-        color: "#D9A441",
-        visual: "pouch",
-        image: "",
-        images: []
-    }
-];
-
+let products = [];
 
 /* -----------------------------------------
    2. ELEMENTOS DO HTML
@@ -92,7 +46,7 @@ const STORAGE_KEY = "vivero-cart";
 
 let activeFilter = "todos";
 let searchTerm = "";
-let cart = loadCart();
+let cart = [];
 
 
 function formatPrice(value) {
@@ -776,9 +730,44 @@ if (checkoutButton) {
    14. INICIALIZAÇÃO DO SITE
    ----------------------------------------- */
 
-renderProducts();
+async function initializeStore() {
 
-renderCart();
+    try {
 
-console.log("VIVERO: site inicializado com sucesso!");
+        // Carrega os produtos do Supabase.
+        products = await window.loadViveroProducts();
 
+        // Recupera a sacola após carregar os produtos.
+        cart = loadCart();
+
+        // Exibe os produtos e a sacola.
+        renderProducts();
+        renderCart();
+
+        console.log(
+            "VIVERO: site inicializado com sucesso!"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "VIVERO: não foi possível inicializar a loja:",
+            error
+        );
+
+        if (productGrid) {
+
+            productGrid.innerHTML = `
+                <p class="no-products">
+                    Não foi possível carregar os produtos.
+                    Tente novamente mais tarde.
+                </p>
+            `;
+
+        }
+
+    }
+
+}
+
+initializeStore();

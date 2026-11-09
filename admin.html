@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Acesso administrativo | VIVERO</title>
+
+    <meta
+        name="description"
+        content="Área administrativa da VIVERO."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <main class="admin-login">
+
+        <div class="admin-login-brand">
+            <a href="index.html">
+                <img src="assets/logo-vivero.png" alt="VIVERO">
+            </a>
+
+            <span>PAINEL ADMINISTRATIVO</span>
+        </div>
+
+        <section class="admin-login-content">
+
+            <span class="admin-eyebrow">VIVERO / ADMIN</span>
+
+            <h1>ACESSO<br>RESTRITO.</h1>
+
+            <p>
+                Entre com suas credenciais para acessar
+                o painel administrativo da loja.
+            </p>
+
+            <form id="admin-login-form">
+
+                <div class="admin-form-field">
+                    <label for="admin-email">E-MAIL</label>
+
+                    <input
+                        type="email"
+                        id="admin-email"
+                        placeholder="Seu e-mail"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="admin-form-field">
+                    <label for="admin-password">SENHA</label>
+
+                    <input
+                        type="password"
+                        id="admin-password"
+                        placeholder="Sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" id="admin-login-button">
+                    ENTRAR NO PAINEL ↗
+                </button>
+
+                <p
+                    id="admin-login-message"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+        </section>
+
+        <footer class="admin-login-footer">
+            © 2026 VIVERO — TODOS OS DIREITOS RESERVADOS.
+        </footer>
+
+    </main>
+
+    <!-- Biblioteca oficial do Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Conexão com o projeto VIVERO -->
+    <script src="supabase.js"></script>
+
+    <!-- Autenticação administrativa -->
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

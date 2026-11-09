@@ -1,0 +1,221 @@
+
+/* =========================================
+   VIVERO — ACESSO ADMINISTRATIVO
+   ========================================= */
+
+:root {
+    --admin-forest: #344D3B;
+    --admin-cream: #F5F3ED;
+    --admin-white: #FFFFFF;
+    --admin-text: #292D28;
+    --admin-muted: #858A82;
+    --admin-border: #DDDCD4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--admin-cream);
+    color: var(--admin-text);
+    font-family: "DM Sans", sans-serif;
+}
+
+.admin-login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 42px 24px 28px;
+}
+
+/* IDENTIDADE DA MARCA */
+
+.admin-login-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-login-brand a {
+    display: inline-flex;
+    align-items: center;
+}
+
+.admin-login-brand img {
+    display: block;
+    width: 112px;
+    height: auto;
+}
+
+.admin-login-brand span,
+.admin-login-footer {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--admin-muted);
+}
+
+/* CONTEÚDO DO LOGIN */
+
+.admin-login-content {
+    width: 100%;
+    max-width: 430px;
+    padding: 58px 48px;
+    background: var(--admin-white);
+    border: 1px solid var(--admin-border);
+}
+
+.admin-eyebrow {
+    display: block;
+    margin-bottom: 22px;
+    color: var(--admin-forest);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.admin-login-content h1 {
+    margin-bottom: 18px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(42px, 7vw, 58px);
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -2.5px;
+}
+
+.admin-login-content > p {
+    margin-bottom: 36px;
+    color: var(--admin-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* FORMULÁRIO */
+
+#admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.admin-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.admin-form-field label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.admin-form-field input {
+    width: 100%;
+    height: 49px;
+    padding: 0 15px;
+    border: 1px solid var(--admin-border);
+    border-radius: 0;
+    outline: none;
+    background: var(--admin-white);
+    color: var(--admin-text);
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s ease;
+}
+
+.admin-form-field input:focus {
+    border-color: var(--admin-forest);
+}
+
+.admin-form-field input::placeholder {
+    color: #A5A79F;
+}
+
+/* BOTÃO */
+
+#admin-login-button {
+    width: 100%;
+    min-height: 51px;
+    margin-top: 5px;
+    border: none;
+    background: var(--admin-forest);
+    color: var(--admin-white);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#admin-login-button:hover {
+    background: #263B2C;
+}
+
+#admin-login-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* MENSAGEM */
+
+#admin-login-message {
+    min-height: 18px;
+    margin-top: -10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#admin-login-message.error {
+    color: #B84C43;
+}
+
+#admin-login-message.success {
+    color: var(--admin-forest);
+}
+
+/* RODAPÉ */
+
+.admin-login-footer {
+    text-align: center;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+
+    .admin-login {
+        padding: 28px 20px 22px;
+    }
+
+    .admin-login-brand img {
+        width: 92px;
+    }
+
+    .admin-login-brand span {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .admin-login-content {
+        padding: 42px 27px;
+    }
+
+    .admin-login-content h1 {
+        font-size: 46px;
+    }
+
+    .admin-login-footer {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+}
