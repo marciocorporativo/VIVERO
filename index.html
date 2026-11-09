@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VIVERO — Seu dia. Seu ritmo.</title>
+
+    <meta name="description" content="Conheça a VIVERO. Acessórios funcionais para acompanhar seu ritmo, todos os dias.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="announcement">
+        <p>FUNCIONALIDADE PARA ACOMPANHAR SEU RITMO.</p>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <a href="#inicio" class="logo" aria-label="VIVERO - Página inicial">
+        <img src="assets/logo-vivero.png" alt="VIVERO">
+        </a>
+
+        <nav class="navigation">
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre nós</a>
+        </nav>
+
+        <div class="header-actions">
+            <button
+                class="cart-button"
+                id="open-cart"
+                type="button"
+                aria-label="Abrir sacola de compras"
+            >           
+                SACOLA (<span id="cart-count">0</span>)
+            </button>
+
+            <button
+                class="menu-button"
+                id="menu-button"
+                type="button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- HERO / APRESENTAÇÃO -->
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">ACESSÓRIOS PARA A VIDA EM MOVIMENTO</span>
+
+                <h1>
+                    SEU DIA.<br>
+                    <span>SEU RITMO.</span>
+                </h1>
+
+                <p>
+                    Menos complicação, mais movimento.
+                    Descubra acessórios pensados para acompanhar
+                    você em cada momento.
+                </p>
+
+                <a href="#produtos" class="primary-button">
+                    EXPLORAR COLEÇÃO ↗
+                </a>
+
+                <div class="hero-footer">
+                    <span>01 — FUNCIONALIDADE</span>
+                    <span>02 — LIBERDADE</span>
+                    <span>03 — MOVIMENTO</span>
+                </div>
+
+            </div>
+
+            <div class="hero-art">
+
+                <div class="art-circle"></div>
+
+                <div class="art-label label-top">
+                    VIVERO OBJECTS / 001
+                </div>
+
+                <div class="bag-illustration">
+                    <div class="bag-handle"></div>
+                    <div class="bag-body">
+                        <img src="assets/logo-vivero-flor.png" alt="" class="bag-flower">
+                    </div>
+                </div>
+
+                <div class="art-label label-bottom">
+                    DESIGNED FOR EVERYDAY LIFE.
+                </div>
+
+                <span class="art-number">01</span>
+
+            </div>
+
+        </section>
+
+        <!-- FAIXA DE DESTAQUE -->
+        <section class="ticker">
+            <div>
+                FUNCIONALIDADE ✳ MOVIMENTO ✳ LIBERDADE ✳
+                FUNCIONALIDADE ✳ MOVIMENTO ✳ LIBERDADE ✳
+            </div>
+        </section>
+
+        <!-- PRODUTOS -->
+        <section class="products-section" id="produtos">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">NOSSA SELEÇÃO / 001</span>
+                    <h2>FEITO PARA<br>ACOMPANHAR.</h2>
+                </div>
+
+                <p style="text-align: right;">
+                    Objetos funcionais, versáteis e prontos
+                    para fazer parte da sua rotina.
+                </p>
+
+            </div>
+
+            <!-- FILTROS -->
+            <div class="product-filters">
+
+                <button class="filter-button active" data-filter="todos">
+                    TODOS
+                </button>
+
+                <button class="filter-button" data-filter="bolsas">
+                    BOLSAS
+                </button>
+
+                <button class="filter-button" data-filter="organizadores">
+                    ORGANIZADORES
+                </button>
+
+                <input
+                    type="search"
+                    id="product-search"
+                    placeholder="Buscar produto..."
+                    aria-label="Buscar produto"
+                >
+
+            </div>
+
+            <!-- CATÁLOGO -->
+            <div class="product-grid" id="product-grid">
+
+                <!-- Produtos inseridos pelo JavaScript -->
+
+            </div>
+
+        </section>
+
+        <!-- SOBRE A MARCA -->
+        <section class="about-section" id="sobre">
+
+            <div class="about-image">
+                <span>VIVERO / EST. 2026</span>
+                <div class="about-shape"></div>
+            </div>
+
+            <div class="about-content">
+
+                <span class="eyebrow">UM POUCO SOBRE NÓS</span>
+
+                <h2>MENOS<br>EXCESSO.<br><span>MAIS VIDA.</span></h2>
+
+                <p>
+                    A VIVERO nasce da ideia de que os pequenos
+                    objetos fazem parte das grandes experiências.
+                    Criamos uma curadoria de acessórios que unem
+                    praticidade, versatilidade e personalidade.
+                </p>
+
+                <a href="#produtos" class="text-link">
+                    CONHEÇA NOSSOS PRODUTOS ↗
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="newsletter" id="newsletter">
+
+            <span class="eyebrow">FIQUE POR DENTRO</span>
+
+            <h2>O NOVO ESTÁ<br>SEMPRE EM MOVIMENTO.</h2>
+
+            <p>
+                Novidades, lançamentos e inspirações.
+                Receba notícias da VIVERO.
+            </p>
+
+            <form id="newsletter-form">
+                <input
+                    type="email"
+                    placeholder="Seu melhor e-mail"
+                    aria-label="Digite seu endereço de e-mail"
+                    required
+                >
+
+                <button type="submit">INSCREVER ↗</button>
+            </form>
+
+            <p id="newsletter-message" aria-live="polite"></p>
+
+        </section>
+
+    </main>
+
+    <!-- SACOLA DE COMPRAS -->
+    <div class="cart-overlay" id="cart-overlay">
+
+        <div class="cart-panel">
+
+            <div class="cart-header">
+                <h2>SUA SACOLA</h2>
+                <button id="close-cart" aria-label="Fechar sacola">✕</button>
+            </div>
+
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart">Sua sacola está vazia.</p>
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>SUBTOTAL</span>
+                    <strong id="cart-total">R$ 0,00</strong>
+                </div>
+
+                <button class="checkout-button" id="checkout-button">
+                    FINALIZAR COMPRA ↗
+                </button>
+
+                <p>Frete calculado na próxima etapa.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RODAPÉ -->
+    
+    <footer class="footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
+                <a href="#inicio" class="logo" aria-label="VIVERO - Página inicial">
+                    <img src="assets/logo-vivero.png" alt="VIVERO">
+                </a>
+
+                <p>SEU DIA. SEU RITMO.</p>
+
+                <span>
+                    Funcionalidade e personalidade<br>
+                    para acompanhar seu caminho.
+                </span>
+
+            </div>
+
+            <div class="footer-links">
+
+                <div class="footer-column">
+                    <h3>EXPLORE</h3>
+                    <a href="#inicio">Início</a>
+                    <a href="#produtos">Produtos</a>
+                    <a href="#sobre">Sobre nós</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>VIVERO</h3>
+                    <a href="#produtos">Nossa coleção</a>
+                    <a href="#sobre">Nossa proposta</a>
+                    <a href="#newsletter">Novidades</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <span>© 2026 VIVERO — TODOS OS DIREITOS RESERVADOS.</span>
+
+            <span>FEITO PARA ACOMPANHAR SEU RITMO.</span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

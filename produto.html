@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produto | VIVERO</title>
+
+    <meta
+        name="description"
+        content="Conheça os acessórios VIVERO e encontre o produto ideal para acompanhar seu ritmo."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="announcement">
+        <p>FUNCIONALIDADE PARA ACOMPANHAR SEU RITMO.</p>
+    </div>
+
+    <header class="header">
+
+        <a href="index.html#inicio" class="logo"
+           aria-label="VIVERO - Página inicial">
+            <img src="assets/logo-vivero.png" alt="VIVERO">
+        </a>
+
+        <nav class="navigation">
+            <a href="index.html#inicio">Início</a>
+            <a href="index.html#produtos">Produtos</a>
+            <a href="index.html#sobre">Sobre nós</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button
+                class="cart-button"
+                id="open-cart"
+                type="button"
+                aria-label="Abrir sacola de compras"
+            >
+                SACOLA (<span id="cart-count">0</span>)
+            </button>
+
+            <button
+                class="menu-button"
+                id="menu-button"
+                type="button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="product-detail-section">
+
+            <div class="product-breadcrumb">
+                <a href="index.html">INÍCIO</a>
+                <span>/</span>
+                <a href="index.html#produtos">PRODUTOS</a>
+                <span>/</span>
+                <span id="product-breadcrumb-name">PRODUTO</span>
+            </div>
+
+            <div class="product-detail-grid">
+
+                <div class="product-detail-gallery">
+
+                    <div
+                        class="product-detail-image"
+                        id="product-detail-image"
+                    >
+                        <span class="product-detail-index"
+                              id="product-detail-index">001</span>
+
+                        <div id="product-detail-visual"></div>
+
+                        <span class="product-detail-caption">
+                            VIVERO OBJECTS
+                        </span>
+                    </div>
+
+                    <div
+                        class="product-gallery-thumbnails"
+                        id="product-gallery-thumbnails"
+                        aria-label="Fotos do produto"
+                    ></div>
+
+                </div>
+
+                <div class="product-detail-info">
+
+                    <span
+                        class="eyebrow"
+                        id="product-detail-category"
+                    >
+                        COLEÇÃO VIVERO
+                    </span>
+
+                    <h1 id="product-detail-name">
+                        Produto
+                    </h1>
+
+                    <p
+                        class="product-detail-price"
+                        id="product-detail-price"
+                    >
+                        R$ 0,00
+                    </p>
+
+                    <div class="product-detail-divider"></div>
+
+                    <p
+                        class="product-detail-description"
+                        id="product-detail-description"
+                    >
+                        Conheça um produto pensado para acompanhar
+                        sua rotina.
+                    </p>
+
+                    <div class="product-detail-reference">
+                        REFERÊNCIA:
+                        <span id="product-detail-reference">001</span>
+                    </div>
+
+                    <div class="product-detail-purchase">
+
+                        <label for="product-quantity">
+                            QUANTIDADE
+                        </label>
+
+                        <div class="product-quantity-control">
+
+                            <button
+                                type="button"
+                                id="quantity-minus"
+                                aria-label="Diminuir quantidade"
+                            >
+                                −
+                            </button>
+
+                            <input
+                                type="number"
+                                id="product-quantity"
+                                value="1"
+                                min="1"
+                                max="99"
+                                aria-label="Quantidade do produto"
+                            >
+
+                            <button
+                                type="button"
+                                id="quantity-plus"
+                                aria-label="Aumentar quantidade"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="product-detail-add"
+                        id="product-detail-add"
+                        type="button"
+                    >
+                        ADICIONAR À SACOLA ↗
+                    </button>
+
+                    <p
+                        class="product-detail-feedback"
+                        id="product-detail-feedback"
+                        aria-live="polite"
+                    ></p>
+
+                    <div class="product-detail-benefits">
+
+                        <div>
+                            <strong>01 / FUNCIONALIDADE</strong>
+                            <span>Feito para facilitar sua rotina.</span>
+                        </div>
+
+                        <div>
+                            <strong>02 / VERSATILIDADE</strong>
+                            <span>Para acompanhar diferentes momentos.</span>
+                        </div>
+
+                        <div>
+                            <strong>03 / VIVERO</strong>
+                            <span>Seu dia. Seu ritmo.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <section class="product-specifications">
+
+            <div class="product-specifications-heading">
+                <span class="eyebrow">VIVERO / DETALHES</span>
+                <h2>FEITO PARA<br>ACOMPANHAR VOCÊ.</h2>
+                <p>
+                    Conheça melhor os detalhes, características
+                    e funcionalidades deste produto.
+                </p>
+            </div>
+
+            <div class="product-specifications-content">
+
+                <div class="product-description-block">
+                    <span class="specification-label">01 / SOBRE O PRODUTO</span>
+                    <h3>Detalhes que fazem a diferença.</h3>
+                    <p id="product-long-description">
+                        Informações detalhadas sobre o produto
+                        serão apresentadas aqui.
+                    </p>
+                </div>
+
+                <div class="product-technical-block">
+                    <span class="specification-label">02 / FICHA TÉCNICA</span>
+
+                    <div class="technical-row">
+                        <span>Material</span>
+                        <strong id="product-material">A confirmar</strong>
+                    </div>
+
+                    <div class="technical-row">
+                        <span>Dimensões</span>
+                        <strong id="product-dimensions">A confirmar</strong>
+                    </div>
+
+                    <div class="technical-row">
+                        <span>Capacidade</span>
+                        <strong id="product-capacity">A confirmar</strong>
+                    </div>
+
+                    <div class="technical-row">
+                        <span>Compartimentos</span>
+                        <strong id="product-compartments">A confirmar</strong>
+                    </div>
+
+                    <div class="technical-row">
+                        <span>Cuidados</span>
+                        <strong id="product-care">A confirmar</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="product-back-section">
+
+            <a href="index.html#produtos">
+                ← VOLTAR PARA A COLEÇÃO
+            </a>
+
+        </section>
+
+    </main>
+
+    <div class="cart-overlay" id="cart-overlay">
+
+        <div class="cart-panel">
+
+            <div class="cart-header">
+                <h2>SUA SACOLA</h2>
+
+                <button
+                    id="close-cart"
+                    type="button"
+                    aria-label="Fechar sacola"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart">Sua sacola está vazia.</p>
+            </div>
+
+            <div class="cart-footer">
+
+                <div class="cart-total">
+                    <span>SUBTOTAL</span>
+                    <strong id="cart-total">R$ 0,00</strong>
+                </div>
+
+                <button
+                    class="checkout-button"
+                    id="checkout-button"
+                >
+                    FINALIZAR COMPRA ↗
+                </button>
+
+                <p>Frete calculado na próxima etapa.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
+                <a href="index.html#inicio" class="logo"
+                   aria-label="VIVERO - Página inicial">
+                    <img src="assets/logo-vivero.png" alt="VIVERO">
+                </a>
+
+                <p>SEU DIA. SEU RITMO.</p>
+
+                <span>
+                    Funcionalidade e personalidade<br>
+                    para acompanhar seu caminho.
+                </span>
+
+            </div>
+
+            <div class="footer-links">
+
+                <div class="footer-column">
+                    <h3>EXPLORE</h3>
+                    <a href="index.html#inicio">Início</a>
+                    <a href="index.html#produtos">Produtos</a>
+                    <a href="index.html#sobre">Sobre nós</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 VIVERO — TODOS OS DIREITOS RESERVADOS.</span>
+            <span>FEITO PARA ACOMPANHAR SEU RITMO.</span>
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="produto.js"></script>
+
+</body>
+</html>
