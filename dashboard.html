@@ -240,16 +240,371 @@
 
             <!-- ÁREAS QUE SERÃO IMPLEMENTADAS -->
 
-            <section id="produtos" class="dashboard-placeholder">
-                <span>01 / CATÁLOGO</span>
-                <h2>Produtos</h2>
-                <p>Área de gerenciamento de produtos.</p>
+            <!-- GERENCIAMENTO DE PRODUTOS -->
+
+            <section id="produtos" class="dashboard-section">
+
+                <div class="dashboard-section-heading">
+
+                    <div>
+                        <span class="dashboard-eyebrow">
+                            01 / CATÁLOGO
+                        </span>
+
+                        <h2>Gerenciar produtos</h2>
+
+                        <p>
+                            Cadastre, edite e organize os produtos da VIVERO.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="add-product-button"
+                        class="dashboard-primary-button"
+                    >
+                        + ADICIONAR PRODUTO
+                    </button>
+
+                </div>
+
+
+                <!-- LISTAGEM DE PRODUTOS -->
+
+                <div class="dashboard-product-container">
+
+                    <div class="dashboard-product-header">
+
+                        <div>
+                            <h3>Produtos cadastrados</h3>
+
+                            <p>
+                                Produtos armazenados no banco de dados.
+                            </p>
+                        </div>
+
+                        <span id="product-list-count">
+                            0 PRODUTOS
+                        </span>
+
+                    </div>
+
+                    <!-- BUSCA DE PRODUTOS -->
+
+                    <div class="dashboard-product-search">
+
+                        <input
+                            type="search"
+                            id="product-search"
+                            placeholder="Buscar produto por nome ou categoria..."
+                            autocomplete="off"
+                            aria-label="Buscar produtos"
+                        >
+
+                    </div>
+
+
+                    <div
+                        id="dashboard-product-list"
+                        class="dashboard-product-list"
+                    >
+
+                        <p class="dashboard-product-loading">
+                            Carregando produtos...
+                        </p>
+
+                    </div>
+
+                </div>
+
             </section>
 
-            <section id="imagens" class="dashboard-placeholder">
-                <span>02 / ARQUIVOS</span>
-                <h2>Imagens</h2>
-                <p>Área de gerenciamento de imagens.</p>
+            <!-- FORMULÁRIO DE CADASTRO DE PRODUTO -->
+
+            <section
+                id="product-form-section"
+                class="dashboard-section"
+                hidden
+            >
+
+                <div class="dashboard-section-heading">
+
+                    <div>
+                        <span class="dashboard-eyebrow">
+                            CATÁLOGO / NOVO PRODUTO
+                        </span>
+
+                        <h2>Cadastrar produto</h2>
+
+                        <p>
+                            Preencha as informações para adicionar um produto à VIVERO.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="cancel-product-button"
+                        class="dashboard-secondary-button"
+                    >
+                        VOLTAR
+                    </button>
+
+                </div>
+
+
+                <form id="dashboard-product-form" class="dashboard-product-form">
+
+                    <div class="dashboard-form-grid">
+
+                        <div class="dashboard-form-field dashboard-form-field-full">
+                            <label for="product-name">Nome do produto</label>
+
+                            <input
+                                type="text"
+                                id="product-name"
+                                name="name"
+                                placeholder="Ex.: Bolsa Horizonte"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="dashboard-form-field">
+                            <label for="product-category">Categoria</label>
+
+                            <select
+                                id="product-category"
+                                name="category"
+                                required
+                            >
+                                <option value="">Selecione uma categoria</option>
+                                <option value="bolsas">Bolsas</option>
+                                <option value="organizadores">Organizadores</option>
+                            </select>
+                        </div>
+
+
+                        <div class="dashboard-form-field">
+                            <label for="product-category-label">Identificação da categoria</label>
+
+                            <input
+                                type="text"
+                                id="product-category-label"
+                                name="category_label"
+                                placeholder="Ex.: BOLSA"
+                            >
+                        </div>
+
+
+                        <div class="dashboard-form-field">
+                            <label for="product-price">Preço (R$)</label>
+
+                            <input
+                                type="number"
+                                id="product-price"
+                                name="price"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="149.90"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="dashboard-form-field">
+                            <label for="product-color">Cor de identificação</label>
+
+                            <input
+                                type="color"
+                                id="product-color"
+                                name="color"
+                                value="#344D3B"
+                            >
+                        </div>
+
+
+                        <div class="dashboard-form-field dashboard-form-field-full">
+
+                            <label for="product-visual">
+                                Tipo de ilustração
+                            </label>
+
+                            <select id="product-visual" name="visual">
+
+                                <option value="bag">Bolsa</option>
+                                <option value="pouch">Organizador / Nécessaire</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="product-form-message"
+                        class="dashboard-form-message"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <div class="dashboard-form-actions">
+
+                        <button
+                            type="button"
+                            id="cancel-product-form-button"
+                            class="dashboard-secondary-button"
+                        >
+                            CANCELAR
+                        </button>
+
+                        <button
+                            type="submit"
+                            id="save-product-button"
+                            class="dashboard-primary-button"
+                        >
+                            SALVAR PRODUTO
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- GERENCIAMENTO DE IMAGENS -->
+
+            <section id="imagens" class="dashboard-section">
+
+                <div class="dashboard-section-heading">
+
+                    <div>
+                        <span class="dashboard-eyebrow">
+                            02 / ARQUIVOS
+                        </span>
+
+                        <h2>Gerenciar imagens</h2>
+
+                        <p>
+                            Adicione e organize as fotografias dos produtos da VIVERO.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- FORMULÁRIO DE ENVIO -->
+
+                <div class="dashboard-product-container">
+
+                    <div class="dashboard-product-header">
+
+                        <div>
+                            <h3>Adicionar imagens</h3>
+
+                            <p>
+                                Selecione um produto e envie suas fotografias.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <form id="dashboard-image-form" class="dashboard-product-form">
+
+                        <div class="dashboard-form-grid">
+
+                            <div class="dashboard-form-field dashboard-form-field-full">
+
+                                <label for="image-product-select">
+                                    Produto
+                                </label>
+
+                                <input
+                                    type="search"
+                                    id="image-product-search"
+                                    placeholder="Buscar produto pelo nome..."
+                                    autocomplete="off"
+                                    aria-label="Buscar produto pelo nome"
+                                >
+
+                                <select id="image-product-select" required>
+
+                                    <option value="">
+                                        Selecione um produto
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="dashboard-form-field dashboard-form-field-full">
+
+                                <label for="product-image-files">
+                                    Fotografias do produto
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="product-image-files"
+                                    accept="image/*"
+                                    multiple
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="image-form-message"
+                            class="dashboard-form-message"
+                            role="status"
+                            aria-live="polite"
+                        ></div>
+
+                        <div class="dashboard-form-actions">
+
+                            <button
+                                type="submit"
+                                id="upload-product-images-button"
+                                class="dashboard-primary-button"
+                            >
+                                ENVIAR IMAGENS
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!-- LISTAGEM DE IMAGENS -->
+
+                <div class="dashboard-product-container">
+
+                    <div class="dashboard-product-header">
+
+                        <div>
+                            <h3>Imagens cadastradas</h3>
+
+                            <p>
+                                Fotografias armazenadas no Supabase.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="dashboard-image-list">
+
+                        <p class="dashboard-product-loading">
+                            Selecione um produto para visualizar suas imagens.
+                        </p>
+
+                    </div>
+
+                </div>
+
             </section>
 
             <section id="pedidos" class="dashboard-placeholder">
@@ -273,6 +628,8 @@
 
     </div>
 
+    <!-- BIBLIOTECA DE ÍCONES LUCIDE -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- BIBLIOTECA DO SUPABASE -->
 
