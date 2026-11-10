@@ -76,6 +76,8 @@ button {
     display: block;
     width: 112px;
     height: auto;
+    margin-left: -15px;
+    align-self: flex-start;
     filter: brightness(0) invert(1);
 }
 
@@ -126,6 +128,11 @@ button {
     border-color: rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.10);
     color: var(--white);
+}
+
+.dashboard-nav-link:hover:not(.active) {
+    border-color: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.035);
 }
 
 .dashboard-nav-icon {
@@ -514,4 +521,471 @@ button {
         font-size: 19px;
     }
 
+}
+
+/* =========================================
+   VIVERO — GERENCIAMENTO DE PRODUTOS
+   ========================================= */
+
+.dashboard-product-container {
+    margin-top: 36px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E1;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dashboard-product-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 25px 28px;
+    border-bottom: 1px solid #E8E8E1;
+}
+
+.dashboard-product-header h3 {
+    margin: 0;
+    color: #344D3B;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 18px;
+}
+
+.dashboard-product-header p {
+    margin: 7px 0 0;
+    color: #85877E;
+    font-size: 13px;
+}
+
+#product-list-count {
+    color: #858B52;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.dashboard-product-list {
+    padding: 10px 28px;
+}
+
+.dashboard-product-loading {
+    padding: 30px 0;
+    color: #85877E;
+    font-size: 14px;
+    text-align: center;
+}
+
+.dashboard-primary-button {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #344D3B;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dashboard-primary-button:hover {
+    background: #263B2C;
+}
+
+@media (max-width: 600px) {
+
+    .dashboard-product-header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 22px 18px;
+    }
+
+    .dashboard-product-list {
+        padding: 10px 18px;
+    }
+
+    .dashboard-primary-button {
+        width: 100%;
+    }
+
+}
+
+/* =========================================
+   VIVERO — FORMULÁRIO DE PRODUTOS
+   ========================================= */
+
+.dashboard-product-form {
+    margin-top: 30px;
+    padding: 32px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E1;
+    border-radius: 12px;
+}
+
+.dashboard-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.dashboard-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.dashboard-form-field-full {
+    grid-column: 1 / -1;
+}
+
+.dashboard-form-field label {
+    color: #344D3B;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.dashboard-form-field input,
+.dashboard-form-field select {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1px solid #E3E5DD;
+    border-radius: 5px;
+    background: #FCFCFA;
+    color: #344D3B;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.dashboard-form-field input:focus,
+.dashboard-form-field select:focus {
+    border-color: #858B52;
+    box-shadow: 0 0 0 3px rgba(133, 139, 82, 0.10);
+}
+
+.dashboard-form-field input[type="color"] {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.dashboard-form-message {
+    margin-top: 22px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.dashboard-form-message.error {
+    color: #B54747;
+}
+
+.dashboard-form-message.success {
+    color: #344D3B;
+}
+
+.dashboard-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid #E8E8E1;
+}
+
+.dashboard-secondary-button {
+    min-height: 46px;
+    padding: 0 20px;
+    border: 1px solid #DDE0D7;
+    border-radius: 5px;
+    background: transparent;
+    color: #344D3B;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dashboard-secondary-button:hover {
+    background: #F3F4EF;
+}
+
+.dashboard-primary-button:disabled,
+.dashboard-secondary-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+
+    .dashboard-product-form {
+        padding: 22px 18px;
+    }
+
+    .dashboard-form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .dashboard-form-field-full {
+        grid-column: auto;
+    }
+
+    .dashboard-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .dashboard-form-actions button {
+        width: 100%;
+    }
+
+}
+
+/* =========================================
+   VIVERO — AÇÕES DOS PRODUTOS
+   ========================================= */
+
+.dashboard-product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #E8E8E1;
+}
+
+.dashboard-product-item:last-child {
+    border-bottom: none;
+}
+
+.dashboard-product-information {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.dashboard-product-information strong {
+    color: #344D3B;
+    font-size: 14px;
+}
+
+.dashboard-product-information span {
+    color: #85877E;
+    font-size: 12px;
+}
+
+.dashboard-product-item > strong {
+    color: #344D3B;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.dashboard-product-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-edit-button {
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid #858B52;
+    border-radius: 4px;
+    background: transparent;
+    color: #344D3B;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dashboard-edit-button:hover {
+    background: #F0F1E9;
+}
+
+@media (max-width: 600px) {
+
+    .dashboard-product-item {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .dashboard-product-information {
+        flex-basis: calc(100% - 100px);
+    }
+
+}
+
+/* BOTÃO DE EXCLUIR PRODUTO */
+
+.dashboard-delete-button {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #E5D9D5;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #B66A58;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dashboard-delete-button svg {
+    width: 17px;
+    height: 17px;
+}
+
+.dashboard-delete-button:hover {
+    background: #F8ECE9;
+    border-color: #B66A58;
+}
+
+/* BUSCA DE PRODUTOS */
+
+.dashboard-product-search {
+    width: 100%;
+    margin: 20px 0 20px 20px;
+}
+
+.dashboard-product-search input {
+    width: 100%;
+    max-width: 480px;
+    height: 46px;
+    padding: 0 16px;
+
+    border: 1px solid #E5E5DF;
+    border-radius: 8px;
+
+    background: #FFFFFF;
+    color: #344D3B;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.dashboard-product-search input:focus {
+    border-color: #344D3B;
+}
+
+.dashboard-product-search input::placeholder {
+    color: #999990;
+}
+
+/* =========================================
+   VIVERO — GERENCIAMENTO DE IMAGENS
+   ========================================= */
+
+#dashboard-image-form input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px dashed #C9CEC5;
+    border-radius: 8px;
+    background: #FAFAF7;
+    color: #344D3B;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#dashboard-image-form input[type="file"]:hover {
+    border-color: #344D3B;
+}
+
+#dashboard-image-form select {
+    cursor: pointer;
+}
+
+.dashboard-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+    padding: 22px;
+}
+
+.dashboard-image-card {
+    overflow: hidden;
+    border: 1px solid #E5E5DF;
+    border-radius: 9px;
+    background: #FFFFFF;
+}
+
+.dashboard-image-card img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #F5F5F0;
+}
+
+.dashboard-image-information {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px;
+}
+
+.dashboard-image-information span {
+    overflow: hidden;
+    color: #686B63;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-image-delete {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #E5D9D5;
+    border-radius: 7px;
+    background: transparent;
+    color: #B66A58;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dashboard-image-delete:hover {
+    background: #F8ECE9;
+    border-color: #B66A58;
+}
+
+/* BUSCA DE PRODUTOS — GERENCIAMENTO DE IMAGENS */
+
+#image-product-search {
+    width: 100%;
+    height: 46px;
+    margin-bottom: 12px;
+    padding: 0 16px;
+    border: 1px solid #E5E5DF;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #344D3B;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+#image-product-search:focus {
+    border-color: #344D3B;
+}
+
+#image-product-search::placeholder {
+    color: #999990;
 }
