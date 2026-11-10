@@ -160,6 +160,40 @@ window.addEventListener(
 );
 
 /* -----------------------------------------
+   POSICIONAR BOTÕES CONFORME A TELA
+   ----------------------------------------- */
+
+const dashboardMobileQuery = window.matchMedia("(max-width: 760px)");
+
+function positionDashboardActions() {
+
+    const actions = document.getElementById("dashboard-page-actions");
+
+    const desktopContainer = document.getElementById("dashboard-sidebar-actions");
+
+    const mobileContainer = document.getElementById("dashboard-mobile-actions");
+
+    if (!actions || !desktopContainer || !mobileContainer) {
+        return;
+    }
+
+    const destination = dashboardMobileQuery.matches
+        ? mobileContainer
+        : desktopContainer;
+
+    if (actions.parentElement !== destination) {
+        destination.appendChild(actions);
+    }
+}
+
+positionDashboardActions();
+
+dashboardMobileQuery.addEventListener(
+    "change",
+    positionDashboardActions
+);
+
+/* -----------------------------------------
    2. ENCERRAR SESSÃO
    ----------------------------------------- */
 
@@ -217,6 +251,8 @@ async function initializeDashboard() {
         await loadDashboardProducts();
 
         await loadImageProductOptions();
+
+        await loadDashboardOrders();
 
     }
 }
@@ -1487,6 +1523,311 @@ dashboardImageForm.addEventListener("submit", async (event) => {
 
         uploadImagesButton.disabled = false;
         uploadImagesButton.textContent = "ENVIAR IMAGENS";
+
+    }
+
+});
+
+/* -----------------------------------------
+   CARREGAR PEDIDOS
+   ----------------------------------------- */
+
+async function loadDashboardOrders() {
+
+    const orderList = document.getElementById(
+        "dashboard-order-list"
+    );
+
+    try {
+
+        const { data: orders, error } = await window.supabaseClient
+            .from("orders")
+            .select(`
+                id,
+                customer_name,
+                customer_email,
+                customer_phone,
+                shipping_address,
+                items,
+                subtotal,
+                shipping_cost,
+                total,
+                status,
+                created_at,
+                updated_at
+            `)
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            throw error;
+        }
+
+        dashboardOrders = orders || [];
+
+        console.log("Pedidos carregados:", dashboardOrders);
+
+        renderDashboardOrders(dashboardOrders);
+
+    } catch (error) {
+
+        console.error("Erro ao carregar pedidos:", error);
+
+        orderList.innerHTML = `
+            <div class="orders-empty-state">
+                <i data-lucide="alert-circle"></i>
+                <p>Não foi possível carregar os pedidos.</p>
+            </div>
+        `;
+
+        lucide.createIcons();
+
+    }
+
+}
+
+/* -----------------------------------------
+   RENDERIZAR LISTA DE PEDIDOS
+   ----------------------------------------- */
+
+function renderDashboardOrders(orders) {
+
+    const orderList = document.getElementById(
+        "dashboard-order-list"
+    );
+
+    if (!orders || orders.length === 0) {
+
+        orderList.innerHTML = `
+            <div class="orders-empty-state">
+                <i data-lucide="shopping-bag"></i>
+                <p>Nenhum pedido encontrado.</p>
+            </div>
+        `;
+
+        lucide.createIcons();
+
+        return;
+    }
+
+    const statusLabels = {
+        pending: "Pendente",
+        processing: "Em preparação",
+        shipped: "Enviado",
+        delivered: "Entregue",
+        cancelled: "Cancelado"
+    };
+
+    orderList.innerHTML = orders.map(order => {
+
+        const orderDate = new Date(order.created_at);
+
+        const formattedDate = orderDate.toLocaleDateString(
+            "pt-BR"
+        );
+
+        const formattedTotal = Number(order.total).toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
+
+        const statusLabel =
+            statusLabels[order.status] || order.status;
+
+        const safeName = String(order.customer_name || "")
+            .replace(/[&<>"']/g, character => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            })[character]);
+
+        return `
+            <div class="order-row">
+
+                <span class="order-id">
+                    #${order.id}
+                </span>
+
+                <span class="order-customer">
+                    ${safeName}
+                </span>
+
+                <span class="order-date">
+                    ${formattedDate}
+                </span>
+
+                <span class="order-total">
+                    ${formattedTotal}
+                </span>
+
+                <span class="order-status ${order.status}">
+                    ${statusLabel}
+                </span>
+
+                <button
+                    class="order-view-button"
+                    data-order-id="${order.id}"
+                    title="Visualizar pedido"
+                >
+                    <i data-lucide="eye"></i>
+                </button>
+
+            </div>
+        `;
+
+    }).join("");
+
+    lucide.createIcons();
+
+}
+
+/* -----------------------------------------
+   BUSCAR PEDIDOS
+   ----------------------------------------- */
+
+let dashboardOrders = [];
+
+let activeOrderStatus = "all";
+
+/* -----------------------------------------
+   BUSCAR E FILTRAR PEDIDOS
+   ----------------------------------------- */
+
+function searchDashboardOrders() {
+
+    const searchInput = document.getElementById(
+        "order-search"
+    );
+
+    const searchTerm = searchInput.value
+        .trim()
+        .toLowerCase();
+
+    const filteredOrders = dashboardOrders.filter(order => {
+
+        const orderId = String(order.id).toLowerCase();
+
+        const customerName = String(
+            order.customer_name || ""
+        ).toLowerCase();
+
+        const matchesSearch =
+            orderId.includes(searchTerm) ||
+            customerName.includes(searchTerm);
+
+        const matchesStatus =
+            activeOrderStatus === "all" ||
+            order.status === activeOrderStatus;
+
+        return matchesSearch && matchesStatus;
+
+    });
+
+    renderDashboardOrders(filteredOrders);
+
+}
+
+/* -----------------------------------------
+   EVENTO DE BUSCA DOS PEDIDOS
+   ----------------------------------------- */
+
+const orderSearchInput = document.getElementById(
+    "order-search"
+);
+
+orderSearchInput.addEventListener(
+    "input",
+    searchDashboardOrders
+);
+
+/* -----------------------------------------
+   EVENTOS DOS FILTROS DE PEDIDOS
+   ----------------------------------------- */
+
+const orderFilterButtons = document.querySelectorAll(
+    ".order-filter"
+);
+
+orderFilterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        activeOrderStatus = button.dataset.status;
+
+        orderFilterButtons.forEach(filter => {
+            filter.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        searchDashboardOrders();
+
+    });
+
+});
+
+/* -----------------------------------------
+   ABRIR E FECHAR DETALHES DO PEDIDO
+   ----------------------------------------- */
+
+const orderDetailsModal = document.getElementById(
+    "order-details-modal"
+);
+
+const closeOrderModalButton = document.getElementById(
+    "close-order-modal"
+);
+
+// Abrir a janela ao clicar no botão de visualização.
+
+document.addEventListener("click", event => {
+
+    const viewButton = event.target.closest(
+        ".order-view-button"
+    );
+
+    if (!viewButton) return;
+
+    const orderId = viewButton.dataset.orderId;
+
+    const order = dashboardOrders.find(
+        item => String(item.id) === String(orderId)
+    );
+
+    if (!order) return;
+
+    document.getElementById("order-modal-id").textContent =
+        `#${order.id}`;
+
+    orderDetailsModal.hidden = false;
+
+    document.body.style.overflow = "hidden";
+
+});
+
+// Fechar pelo botão.
+
+closeOrderModalButton.addEventListener("click", () => {
+
+    orderDetailsModal.hidden = true;
+
+    document.body.style.overflow = "";
+
+});
+
+// Fechar ao clicar fora da janela.
+
+orderDetailsModal.addEventListener("click", event => {
+
+    if (event.target === orderDetailsModal) {
+
+        orderDetailsModal.hidden = true;
+
+        document.body.style.overflow = "";
 
     }
 

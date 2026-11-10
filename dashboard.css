@@ -1,991 +1,2809 @@
 
+
 /* =========================================
+
    VIVERO — PAINEL ADMINISTRATIVO
+
    ========================================= */
+
+
 
 :root {
+
     --forest: #344D3B;
+
     --forest-dark: #263B2C;
+
     --cream: #F5F3ED;
+
     --white: #FFFFFF;
+
     --text: #292D28;
+
     --muted: #858A82;
+
     --border: #E5E3DC;
+
 }
+
+
 
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
+
 
 html {
+
     scroll-behavior: smooth;
+
 }
+
+
 
 body {
+
     min-height: 100vh;
+
     background: var(--cream);
+
     color: var(--text);
+
     font-family: "DM Sans", sans-serif;
+
 }
+
+
 
 a {
+
     color: inherit;
+
     text-decoration: none;
+
 }
+
+
 
 button {
+
     font-family: inherit;
+
 }
 
+
+
 /* =========================================
+
    1. ESTRUTURA PRINCIPAL
+
    ========================================= */
+
+
 
 .dashboard-layout {
+
     min-height: 100vh;
+
     display: grid;
+
     grid-template-columns: 250px minmax(0, 1fr);
+
 }
+
+
 
 /* =========================================
+
    2. MENU LATERAL
+
    ========================================= */
 
+
+
 .dashboard-sidebar {
+
     position: sticky;
+
     top: 0;
+
     height: 100vh;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: space-between;
+
     padding: 34px 23px 25px;
+
     background: var(--forest);
+
     color: var(--white);
+
 }
+
+
 
 .dashboard-brand {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 13px;
+
     padding: 0 8px;
+
 }
+
+
 
 .dashboard-brand img {
+
     display: block;
+
     width: 112px;
+
     height: auto;
+
     margin-left: -15px;
+
     align-self: flex-start;
+
     filter: brightness(0) invert(1);
+
 }
 
+
+
 .dashboard-brand span {
+
     color: rgba(255, 255, 255, 0.58);
+
     font-size: 9px;
+
     font-weight: 600;
+
     letter-spacing: 1.7px;
+
 }
+
+
 
 /* NAVEGAÇÃO */
 
+
+
 .dashboard-navigation {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 7px;
+
     margin-top: auto;
+
     margin-bottom: auto;
+
 }
+
+
 
 .dashboard-nav-label {
+
     margin: 0 8px 13px;
+
     color: rgba(255, 255, 255, 0.48);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: 1.5px;
+
 }
+
+
 
 .dashboard-nav-label-secondary {
+
     margin-top: 34px;
+
 }
+
+
 
 .dashboard-nav-link {
+
     min-height: 46px;
+
     display: flex;
+
     align-items: center;
+
     gap: 13px;
+
     padding: 0 12px;
+
     border: 1px solid transparent;
+
     color: rgba(255, 255, 255, 0.72);
+
     font-size: 12px;
+
     font-weight: 500;
+
     transition: 0.2s ease;
+
 }
+
+
 
 .dashboard-nav-link:hover,
+
 .dashboard-nav-link.active {
+
     border-color: rgba(255, 255, 255, 0.12);
+
     background: rgba(255, 255, 255, 0.10);
+
     color: var(--white);
+
 }
+
+
 
 .dashboard-nav-link:hover:not(.active) {
+
     border-color: rgba(255, 255, 255, 0.06);
+
     background: rgba(255, 255, 255, 0.035);
+
 }
 
+
+
 .dashboard-nav-icon {
+
     width: 20px;
+
     font-size: 18px;
+
     text-align: center;
+
 }
+
+
 
 /* RODAPÉ DO MENU */
 
+
+
 .dashboard-sidebar-footer {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 10px;
+
     padding: 18px 8px 0;
+
     border-top: 1px solid rgba(255, 255, 255, 0.16);
+
 }
+
+
 
 .dashboard-store-link,
+
 .dashboard-logout-button {
+
     display: block;
+
     padding: 10px 0;
+
     border: none;
+
     background: transparent;
+
     color: rgba(255, 255, 255, 0.75);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: 1.2px;
+
     text-align: left;
+
     cursor: pointer;
+
     transition: color 0.2s ease;
+
 }
+
+
 
 .dashboard-store-link:hover,
+
 .dashboard-logout-button:hover {
+
     color: var(--white);
+
 }
+
+
 
 .dashboard-logout-button:disabled {
+
     opacity: 0.5;
+
     cursor: wait;
+
 }
+
+
 
 /* =========================================
+
    3. CONTEÚDO PRINCIPAL
+
    ========================================= */
 
+
+
 .dashboard-main {
+
     width: 100%;
+
     max-width: 1600px;
+
     min-width: 0;
+
     margin: 0 auto;
+
     padding: 43px 55px 30px;
+
 }
+
+
 
 /* CABEÇALHO */
 
+
+
 .dashboard-header {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 20px;
+
     padding-bottom: 31px;
+
     border-bottom: 1px solid var(--border);
+
 }
+
+
 
 .dashboard-header-eyebrow,
+
 .dashboard-eyebrow {
+
     display: block;
+
     margin-bottom: 12px;
+
     color: var(--forest);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: 1.8px;
+
 }
+
+
 
 .dashboard-header h1 {
+
     font-family: "Space Grotesk", sans-serif;
+
     font-size: 27px;
+
     font-weight: 600;
+
     letter-spacing: -0.8px;
+
 }
+
+
 
 .dashboard-header-status {
+
     display: flex;
+
     align-items: center;
+
     gap: 9px;
+
     color: var(--muted);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: 1.2px;
+
 }
+
+
 
 .dashboard-status-indicator {
+
     width: 7px;
+
     height: 7px;
+
     border-radius: 50%;
+
     background: var(--forest);
+
 }
+
+
 
 /* =========================================
+
    4. VISÃO GERAL
+
    ========================================= */
 
+
+
 .dashboard-section {
+
     padding-top: 43px;
+
 }
+
+
 
 .dashboard-section-heading {
+
     display: flex;
+
     justify-content: space-between;
+
     margin-bottom: 30px;
+
 }
+
+
 
 .dashboard-section-heading h2 {
+
     margin-bottom: 10px;
+
     font-family: "Space Grotesk", sans-serif;
+
     font-size: 31px;
+
     font-weight: 600;
+
     letter-spacing: -1px;
+
 }
 
+
+
 .dashboard-section-heading p {
+
     color: var(--muted);
+
     font-size: 12px;
+
     line-height: 1.8;
+
 }
+
+
 
 /* INDICADORES */
 
+
+
 .dashboard-overview-grid {
+
     display: grid;
+
     grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: 17px;
+
 }
+
+
 
 .dashboard-stat-card {
+
     min-height: 155px;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: flex-start;
+
     padding: 24px;
+
     border: 1px solid var(--border);
+
     background: var(--white);
+
 }
+
+
 
 .dashboard-stat-label {
+
     color: var(--muted);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: 1.1px;
+
 }
+
+
 
 .dashboard-stat-card strong {
+
     margin-top: 19px;
+
     font-family: "Space Grotesk", sans-serif;
+
     font-size: 35px;
+
     font-weight: 600;
+
     line-height: 1;
+
 }
+
+
 
 .dashboard-stat-description {
+
     margin-top: 9px;
+
     color: var(--muted);
+
     font-size: 10px;
+
 }
 
+
+
 /* =========================================
+
    5. ACESSO RÁPIDO
+
    ========================================= */
+
+
 
 .dashboard-quick-access {
+
     margin-top: 49px;
+
 }
+
+
 
 .dashboard-quick-grid {
+
     display: grid;
+
     grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: 17px;
+
     margin-top: 19px;
+
 }
+
+
 
 .dashboard-quick-card {
+
     min-height: 150px;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: flex-start;
+
     padding: 23px;
+
     border: 1px solid var(--border);
+
     background: var(--white);
+
     transition: border-color 0.2s ease, transform 0.2s ease;
+
 }
+
+
 
 .dashboard-quick-card:hover {
+
     border-color: var(--forest);
+
     transform: translateY(-3px);
+
 }
+
+
 
 .dashboard-quick-card > span {
+
     color: var(--forest);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: 1.1px;
+
 }
+
+
 
 .dashboard-quick-card strong {
+
     margin-top: 22px;
+
     font-family: "Space Grotesk", sans-serif;
+
     font-size: 15px;
+
     font-weight: 600;
+
 }
+
+
 
 .dashboard-quick-card p {
+
     margin-top: 8px;
+
     color: var(--muted);
+
     font-size: 10px;
+
     line-height: 1.6;
+
 }
 
+
+
 /* =========================================
+
    6. SEÇÕES FUTURAS
+
    ========================================= */
+
+
 
 .dashboard-placeholder {
+
     min-height: 190px;
+
     margin-top: 50px;
+
     padding: 30px;
+
     border: 1px solid var(--border);
+
     background: var(--white);
+
     scroll-margin-top: 30px;
+
 }
+
+
 
 .dashboard-placeholder > span {
+
     color: var(--forest);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: 1.3px;
+
 }
+
+
 
 .dashboard-placeholder h2 {
+
     margin-top: 20px;
+
     font-family: "Space Grotesk", sans-serif;
+
     font-size: 24px;
+
     font-weight: 600;
+
 }
+
+
 
 .dashboard-placeholder p {
+
     margin-top: 9px;
+
     color: var(--muted);
+
     font-size: 12px;
+
 }
 
+
+
 /* =========================================
+
    7. RODAPÉ
+
    ========================================= */
+
+
 
 .dashboard-footer {
+
     margin-top: 55px;
+
     padding-top: 22px;
+
     border-top: 1px solid var(--border);
+
     color: var(--muted);
+
     font-size: 9px;
+
     font-weight: 600;
+
     letter-spacing: 1.2px;
+
 }
 
+
+
 /* =========================================
+
    8. RESPONSIVIDADE
+
    ========================================= */
+
+
 
 @media (max-width: 1100px) {
 
+
+
     .dashboard-main {
+
         padding: 35px 30px;
+
     }
+
+
 
     .dashboard-layout {
+
         grid-template-columns: 220px minmax(0, 1fr);
+
     }
+
+
 
     .dashboard-overview-grid,
+
     .dashboard-quick-grid {
+
         gap: 12px;
+
     }
 
+
+
     .dashboard-stat-card,
+
     .dashboard-quick-card {
+
         padding: 18px;
+
+    }
+
+
+
+}
+
+
+
+@media (max-width: 760px) {
+
+
+
+    .dashboard-layout {
+
+        display: flex;
+
+        flex-direction: column;
+
+    }
+
+
+
+    .dashboard-sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        padding: 22px 20px;
+
+        gap: 24px;
+
+    }
+
+
+
+    .dashboard-brand {
+
+        padding: 0;
+
+    }
+
+
+
+    .dashboard-brand img {
+
+        width: 95px;
+
+    }
+
+
+
+    .dashboard-navigation {
+
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 5px;
+
+        margin: 0;
+
+    }
+
+
+
+    .dashboard-nav-label {
+
+        grid-column: 1 / -1;
+
+        margin: 8px 5px;
+
+    }
+
+
+
+    .dashboard-nav-label-secondary {
+
+        margin-top: 15px;
+
+    }
+
+
+
+    .dashboard-nav-link {
+
+        min-height: 42px;
+
+        padding: 0 8px;
+
+        font-size: 11px;
+
+    }
+
+
+
+    .dashboard-sidebar-footer {
+
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        gap: 15px;
+
+        padding: 12px 0 0;
+
+    }
+
+
+
+    .dashboard-main {
+
+        padding: 28px 20px;
+
+    }
+
+
+
+    .dashboard-header {
+
+        align-items: flex-start;
+
+    }
+
+
+
+    .dashboard-header h1 {
+
+        font-size: 22px;
+
+    }
+
+
+
+    .dashboard-overview-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .dashboard-stat-card {
+
+        min-height: 125px;
+
+    }
+
+
+
+    .dashboard-quick-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .dashboard-section-heading h2 {
+
+        font-size: 26px;
+
+    }
+
+
+
+}
+
+
+
+@media (max-width: 420px) {
+
+
+
+    .dashboard-header-status {
+
+        font-size: 8px;
+
+    }
+
+
+
+    .dashboard-header {
+
+        gap: 10px;
+
+    }
+
+
+
+    .dashboard-header h1 {
+
+        font-size: 19px;
+
+    }
+
+
+
+}
+
+
+
+/* =========================================
+
+   VIVERO — GERENCIAMENTO DE PRODUTOS
+
+   ========================================= */
+
+
+
+.dashboard-product-container {
+
+    margin-top: 36px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #E8E8E1;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+}
+
+
+
+.dashboard-product-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 25px 28px;
+
+    border-bottom: 1px solid #E8E8E1;
+
+}
+
+
+
+.dashboard-product-header h3 {
+
+    margin: 0;
+
+    color: #344D3B;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 18px;
+
+}
+
+
+
+.dashboard-product-header p {
+
+    margin: 7px 0 0;
+
+    color: #85877E;
+
+    font-size: 13px;
+
+}
+
+
+
+#product-list-count {
+
+    color: #858B52;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+
+}
+
+
+
+.dashboard-product-list {
+
+    padding: 10px 28px;
+
+}
+
+
+
+.dashboard-product-loading {
+
+    padding: 30px 0;
+
+    color: #85877E;
+
+    font-size: 14px;
+
+    text-align: center;
+
+}
+
+
+
+.dashboard-primary-button {
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #344D3B;
+
+    color: #FFFFFF;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+
+}
+
+
+
+.dashboard-primary-button:hover {
+
+    background: #263B2C;
+
+}
+
+
+
+@media (max-width: 600px) {
+
+
+
+    .dashboard-product-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 22px 18px;
+
+    }
+
+
+
+    .dashboard-product-list {
+
+        padding: 10px 18px;
+
+    }
+
+
+
+    .dashboard-primary-button {
+
+        width: 100%;
+
+    }
+
+
+
+}
+
+
+
+/* =========================================
+
+   VIVERO — FORMULÁRIO DE PRODUTOS
+
+   ========================================= */
+
+
+
+.dashboard-product-form {
+
+    margin-top: 30px;
+
+    padding: 32px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #E8E8E1;
+
+    border-radius: 12px;
+
+}
+
+
+
+.dashboard-form-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+}
+
+
+
+.dashboard-form-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+}
+
+
+
+.dashboard-form-field-full {
+
+    grid-column: 1 / -1;
+
+}
+
+
+
+.dashboard-form-field label {
+
+    color: #344D3B;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+
+.dashboard-form-field input,
+
+.dashboard-form-field select {
+
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid #E3E5DD;
+
+    border-radius: 5px;
+
+    background: #FCFCFA;
+
+    color: #344D3B;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+
+.dashboard-form-field input:focus,
+
+.dashboard-form-field select:focus {
+
+    border-color: #858B52;
+
+    box-shadow: 0 0 0 3px rgba(133, 139, 82, 0.10);
+
+}
+
+
+
+.dashboard-form-field input[type="color"] {
+
+    padding: 5px;
+
+    cursor: pointer;
+
+}
+
+
+
+.dashboard-form-message {
+
+    margin-top: 22px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+
+.dashboard-form-message.error {
+
+    color: #B54747;
+
+}
+
+
+
+.dashboard-form-message.success {
+
+    color: #344D3B;
+
+}
+
+
+
+.dashboard-form-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    padding-top: 24px;
+
+    border-top: 1px solid #E8E8E1;
+
+}
+
+
+
+.dashboard-secondary-button {
+
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    border: 1px solid #DDE0D7;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #344D3B;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+
+}
+
+
+
+.dashboard-secondary-button:hover {
+
+    background: #F3F4EF;
+
+}
+
+
+
+.dashboard-primary-button:disabled,
+
+.dashboard-secondary-button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+}
+
+
+
+@media (max-width: 600px) {
+
+
+
+    .dashboard-product-form {
+
+        padding: 22px 18px;
+
+    }
+
+
+
+    .dashboard-form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+    }
+
+
+
+    .dashboard-form-field-full {
+
+        grid-column: auto;
+
+    }
+
+
+
+    .dashboard-form-actions {
+
+        flex-direction: column-reverse;
+
+    }
+
+
+
+    .dashboard-form-actions button {
+
+        width: 100%;
+
+    }
+
+
+
+}
+
+
+
+/* =========================================
+
+   VIVERO — AÇÕES DOS PRODUTOS
+
+   ========================================= */
+
+
+
+.dashboard-product-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #E8E8E1;
+
+}
+
+
+
+.dashboard-product-item:last-child {
+
+    border-bottom: none;
+
+}
+
+
+
+.dashboard-product-information {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+
+.dashboard-product-information strong {
+
+    color: #344D3B;
+
+    font-size: 14px;
+
+}
+
+
+
+.dashboard-product-information span {
+
+    color: #85877E;
+
+    font-size: 12px;
+
+}
+
+
+
+.dashboard-product-item > strong {
+
+    color: #344D3B;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+}
+
+
+
+.dashboard-product-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+
+.dashboard-edit-button {
+
+    min-height: 36px;
+
+    padding: 0 14px;
+
+    border: 1px solid #858B52;
+
+    border-radius: 4px;
+
+    background: transparent;
+
+    color: #344D3B;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.6px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+
+}
+
+
+
+.dashboard-edit-button:hover {
+
+    background: #F0F1E9;
+
+}
+
+
+
+@media (max-width: 600px) {
+
+
+
+    .dashboard-product-item {
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
+    }
+
+
+
+    .dashboard-product-information {
+
+        flex-basis: calc(100% - 100px);
+
+    }
+
+
+
+}
+
+
+
+/* BOTÃO DE EXCLUIR PRODUTO */
+
+
+
+.dashboard-delete-button {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+
+    border: 1px solid #E5D9D5;
+
+    border-radius: 8px;
+
+
+
+    background: transparent;
+
+    color: #B66A58;
+
+
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+}
+
+
+
+.dashboard-delete-button svg {
+
+    width: 17px;
+
+    height: 17px;
+
+}
+
+
+
+.dashboard-delete-button:hover {
+
+    background: #F8ECE9;
+
+    border-color: #B66A58;
+
+}
+
+
+
+/* BUSCA DE PRODUTOS */
+
+
+
+.dashboard-product-search {
+
+    width: 100%;
+
+    margin: 20px 0 20px 20px;
+
+}
+
+
+
+.dashboard-product-search input {
+
+    width: 100%;
+
+    max-width: 480px;
+
+    height: 46px;
+
+    padding: 0 16px;
+
+
+
+    border: 1px solid #E5E5DF;
+
+    border-radius: 8px;
+
+
+
+    background: #FFFFFF;
+
+    color: #344D3B;
+
+
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+
+
+    outline: none;
+
+    transition: border-color 0.2s ease;
+
+}
+
+
+
+.dashboard-product-search input:focus {
+
+    border-color: #344D3B;
+
+}
+
+
+
+.dashboard-product-search input::placeholder {
+
+    color: #999990;
+
+}
+
+
+
+/* =========================================
+
+   VIVERO — GERENCIAMENTO DE IMAGENS
+
+   ========================================= */
+
+
+
+#dashboard-image-form input[type="file"] {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px dashed #C9CEC5;
+
+    border-radius: 8px;
+
+    background: #FAFAF7;
+
+    color: #344D3B;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+}
+
+
+
+#dashboard-image-form input[type="file"]:hover {
+
+    border-color: #344D3B;
+
+}
+
+
+
+#dashboard-image-form select {
+
+    cursor: pointer;
+
+}
+
+
+
+.dashboard-image-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+    gap: 18px;
+
+    padding: 22px;
+
+}
+
+
+
+.dashboard-image-card {
+
+    overflow: hidden;
+
+    border: 1px solid #E5E5DF;
+
+    border-radius: 9px;
+
+    background: #FFFFFF;
+
+}
+
+
+
+.dashboard-image-card img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 180px;
+
+    object-fit: cover;
+
+    background: #F5F5F0;
+
+}
+
+
+
+.dashboard-image-information {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 12px;
+
+}
+
+
+
+.dashboard-image-information span {
+
+    overflow: hidden;
+
+    color: #686B63;
+
+    font-size: 12px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+
+.dashboard-image-delete {
+
+    display: flex;
+
+    flex-shrink: 0;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: 1px solid #E5D9D5;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: #B66A58;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+}
+
+
+
+.dashboard-image-delete:hover {
+
+    background: #F8ECE9;
+
+    border-color: #B66A58;
+
+}
+
+
+
+/* BUSCA DE PRODUTOS — GERENCIAMENTO DE IMAGENS */
+
+
+
+#image-product-search {
+
+    width: 100%;
+
+    height: 46px;
+
+    margin-bottom: 12px;
+
+    padding: 0 16px;
+
+    border: 1px solid #E5E5DF;
+
+    border-radius: 8px;
+
+    background: #FFFFFF;
+
+    color: #344D3B;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: border-color 0.2s ease;
+
+}
+
+
+
+#image-product-search:focus {
+
+    border-color: #344D3B;
+
+}
+
+
+
+#image-product-search::placeholder {
+
+    color: #999990;
+
+}
+
+
+
+/* =========================================
+
+   VIVERO — GERENCIAMENTO DE PEDIDOS
+
+   ========================================= */
+
+
+
+.orders-toolbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-top: 32px;
+
+    margin-bottom: 24px;
+
+}
+
+
+
+.orders-search {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 340px;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 6px;
+
+    background: var(--white);
+
+}
+
+
+
+.orders-search i {
+
+    width: 17px;
+
+    height: 17px;
+
+    color: var(--muted);
+
+}
+
+
+
+.orders-search input {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font: inherit;
+
+    font-size: 13px;
+
+    color: var(--text);
+
+}
+
+
+
+.orders-filters {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+.order-filter {
+
+    padding: 9px 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+
+.order-filter:hover {
+
+    background: rgba(52, 77, 59, 0.05);
+
+    color: var(--forest);
+
+}
+
+
+
+.order-filter.active {
+
+    background: var(--forest);
+
+    border-color: var(--forest);
+
+    color: var(--white);
+
+}
+
+
+
+.orders-list-container {
+
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: var(--white);
+
+    overflow: hidden;
+
+}
+
+
+
+.orders-list-header {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr 1fr 0.8fr 1fr 40px;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 17px 22px;
+
+    background: #F8F8F5;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+
+.orders-list-header span {
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+
+}
+
+
+
+.orders-empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 65px 20px;
+
+    color: var(--muted);
+
+}
+
+
+
+.orders-empty-state i {
+
+    width: 28px;
+
+    height: 28px;
+
+    opacity: 0.5;
+
+}
+
+
+
+.orders-empty-state p {
+
+    margin: 0;
+
+    font-size: 13px;
+
+}
+
+
+
+/* -----------------------------------------
+
+   LINHAS DA LISTA DE PEDIDOS
+
+   ----------------------------------------- */
+
+
+
+.order-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr 1fr 0.8fr 1fr 40px;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 18px 22px;
+
+    border-bottom: 1px solid var(--border);
+
+    transition: background 0.2s ease;
+
+}
+
+
+
+.order-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+
+.order-row:hover {
+
+    background: rgba(52, 77, 59, 0.025);
+
+}
+
+
+
+.order-row span {
+
+    font-size: 12px;
+
+    color: var(--text);
+
+}
+
+
+
+.order-id {
+
+    font-weight: 600;
+
+}
+
+
+
+.order-customer {
+
+    font-weight: 500;
+
+}
+
+
+
+.order-date {
+
+    color: var(--muted) !important;
+
+}
+
+
+
+.order-total {
+
+    font-weight: 600;
+
+}
+
+
+
+.order-status {
+
+    width: fit-content;
+
+    padding: 6px 10px;
+
+    border-radius: 4px;
+
+    font-size: 10px !important;
+
+    font-weight: 600;
+
+}
+
+
+
+.order-status.pending {
+
+    background: #F5F0E5;
+
+    color: #9A7837;
+
+}
+
+
+
+.order-status.processing {
+
+    background: #EAF0F5;
+
+    color: #53738F;
+
+}
+
+
+
+.order-status.shipped {
+
+    background: #E9EFF0;
+
+    color: #52777A;
+
+}
+
+
+
+.order-status.delivered {
+
+    background: #E8EFE9;
+
+    color: #496B50;
+
+}
+
+
+
+.order-status.cancelled {
+
+    background: #F5EAEA;
+
+    color: #A45E5E;
+
+}
+
+
+
+.order-view-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+
+.order-view-button:hover {
+
+    background: var(--forest);
+
+    border-color: var(--forest);
+
+    color: var(--white);
+
+}
+
+
+
+.order-view-button i {
+
+    width: 16px;
+
+    height: 16px;
+
+}
+
+
+
+/* =========================================
+
+   MODAL DE DETALHES DO PEDIDO
+
+   ========================================= */
+
+
+
+.order-modal[hidden] {
+
+    display: none;
+
+}
+
+
+
+.order-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(25, 32, 26, 0.55);
+
+    backdrop-filter: blur(3px);
+
+}
+
+
+
+.order-modal-content {
+
+    width: 100%;
+
+    max-width: 680px;
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    background: var(--white);
+
+    border-radius: 8px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+}
+
+
+
+.order-modal-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 28px 32px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+
+.order-modal-header span {
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+
+    color: var(--muted);
+
+}
+
+
+
+.order-modal-header h2 {
+
+    margin: 8px 0 0;
+
+    font-size: 21px;
+
+    font-weight: 500;
+
+    color: var(--text);
+
+}
+
+
+
+.order-modal-header h2 strong {
+
+    color: var(--forest);
+
+}
+
+
+
+.order-modal-close {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 36px;
+
+    height: 36px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+
+.order-modal-close:hover {
+
+    background: var(--forest);
+
+    border-color: var(--forest);
+
+    color: var(--white);
+
+}
+
+
+
+.order-modal-close i {
+
+    width: 17px;
+
+    height: 17px;
+
+}
+
+
+
+#order-modal-body {
+
+    padding: 32px;
+
+}
+
+/* =========================================
+   RESPONSIVIDADE — PEDIDOS
+   ========================================= */
+
+@media (max-width: 760px) {
+
+    .orders-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .orders-search {
+        width: 100%;
+    }
+
+    .orders-filters {
+        justify-content: flex-start;
+    }
+
+    .orders-list-container {
+        overflow-x: auto;
+    }
+
+    .orders-list-header,
+    .order-row {
+        min-width: 700px;
+    }
+
+    .order-modal {
+        padding: 12px;
+    }
+
+    .order-modal-content {
+        max-height: 92vh;
+    }
+
+    .order-modal-header {
+        padding: 22px 20px;
+    }
+
+    #order-modal-body {
+        padding: 22px 20px;
     }
 
 }
+
+/* =========================================
+   RESPONSIVIDADE — GALERIA E FORMULÁRIOS
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .dashboard-image-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .dashboard-image-card img {
+        height: 135px;
+    }
+
+    .dashboard-image-information {
+        padding: 9px;
+    }
+
+    .dashboard-image-information span {
+        font-size: 10px;
+    }
+
+    .dashboard-product-search {
+        margin-left: 0;
+    }
+
+    .dashboard-product-search input {
+        max-width: 100%;
+    }
+
+    #image-product-search {
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================
+   MENU MOBILE — BARRA FIXA DE NAVEGAÇÃO
+   ========================================= */
 
 @media (max-width: 760px) {
 
     .dashboard-layout {
-        display: flex;
-        flex-direction: column;
+        display: block;
     }
 
     .dashboard-sidebar {
-        position: relative;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
         width: 100%;
-        height: auto;
-        padding: 22px 20px;
-        gap: 24px;
+        height: 64px;
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--forest);
     }
 
-    .dashboard-brand {
-        padding: 0;
-    }
-
-    .dashboard-brand img {
-        width: 95px;
+    .dashboard-brand,
+    .dashboard-sidebar-footer,
+    .dashboard-nav-label {
+        display: none;
     }
 
     .dashboard-navigation {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 5px;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        width: 100%;
+        max-width: 480px;
+        gap: 8px;
         margin: 0;
     }
 
-    .dashboard-nav-label {
-        grid-column: 1 / -1;
-        margin: 8px 5px;
-    }
-
-    .dashboard-nav-label-secondary {
-        margin-top: 15px;
-    }
-
     .dashboard-nav-link {
-        min-height: 42px;
-        padding: 0 8px;
-        font-size: 11px;
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 0;
+        font-size: 0;
     }
 
-    .dashboard-sidebar-footer {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 15px;
-        padding: 12px 0 0;
-    }
-
-    .dashboard-main {
-        padding: 28px 20px;
-    }
-
-    .dashboard-header {
-        align-items: flex-start;
-    }
-
-    .dashboard-header h1 {
+    .dashboard-nav-icon {
+        width: auto;
         font-size: 22px;
     }
 
-    .dashboard-overview-grid {
-        grid-template-columns: 1fr;
+    .dashboard-main {
+        padding-top: 88px;
     }
 
-    .dashboard-stat-card {
-        min-height: 125px;
-    }
-
-    .dashboard-quick-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-section-heading h2 {
-        font-size: 26px;
-    }
-
-}
-
-@media (max-width: 420px) {
-
-    .dashboard-header-status {
-        font-size: 8px;
-    }
-
-    .dashboard-header {
-        gap: 10px;
-    }
-
-    .dashboard-header h1 {
-        font-size: 19px;
+    .dashboard-section,
+    .dashboard-placeholder {
+        scroll-margin-top: 80px;
     }
 
 }
 
 /* =========================================
-   VIVERO — GERENCIAMENTO DE PRODUTOS
+   AÇÕES DO PAINEL
    ========================================= */
 
-.dashboard-product-container {
-    margin-top: 36px;
-    background: #FFFFFF;
-    border: 1px solid #E8E8E1;
-    border-radius: 12px;
-    overflow: hidden;
-}
+/* Computador: ações na barra lateral */
 
-.dashboard-product-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 25px 28px;
-    border-bottom: 1px solid #E8E8E1;
-}
-
-.dashboard-product-header h3 {
-    margin: 0;
-    color: #344D3B;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 18px;
-}
-
-.dashboard-product-header p {
-    margin: 7px 0 0;
-    color: #85877E;
-    font-size: 13px;
-}
-
-#product-list-count {
-    color: #858B52;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-
-.dashboard-product-list {
-    padding: 10px 28px;
-}
-
-.dashboard-product-loading {
-    padding: 30px 0;
-    color: #85877E;
-    font-size: 14px;
-    text-align: center;
-}
-
-.dashboard-primary-button {
-    padding: 14px 20px;
-    border: none;
-    border-radius: 5px;
-    background: #344D3B;
-    color: #FFFFFF;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.dashboard-primary-button:hover {
-    background: #263B2C;
-}
-
-@media (max-width: 600px) {
-
-    .dashboard-product-header {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 22px 18px;
-    }
-
-    .dashboard-product-list {
-        padding: 10px 18px;
-    }
-
-    .dashboard-primary-button {
-        width: 100%;
-    }
-
-}
-
-/* =========================================
-   VIVERO — FORMULÁRIO DE PRODUTOS
-   ========================================= */
-
-.dashboard-product-form {
-    margin-top: 30px;
-    padding: 32px;
-    background: #FFFFFF;
-    border: 1px solid #E8E8E1;
-    border-radius: 12px;
-}
-
-.dashboard-form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-}
-
-.dashboard-form-field {
+.dashboard-sidebar-footer .dashboard-page-actions {
     display: flex;
     flex-direction: column;
-    gap: 9px;
-}
-
-.dashboard-form-field-full {
-    grid-column: 1 / -1;
-}
-
-.dashboard-form-field label {
-    color: #344D3B;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.dashboard-form-field input,
-.dashboard-form-field select {
-    width: 100%;
-    min-height: 48px;
-    padding: 0 14px;
-    border: 1px solid #E3E5DD;
-    border-radius: 5px;
-    background: #FCFCFA;
-    color: #344D3B;
-    font-family: "DM Sans", sans-serif;
-    font-size: 14px;
-    outline: none;
-}
-
-.dashboard-form-field input:focus,
-.dashboard-form-field select:focus {
-    border-color: #858B52;
-    box-shadow: 0 0 0 3px rgba(133, 139, 82, 0.10);
-}
-
-.dashboard-form-field input[type="color"] {
-    padding: 5px;
-    cursor: pointer;
-}
-
-.dashboard-form-message {
-    margin-top: 22px;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.dashboard-form-message.error {
-    color: #B54747;
-}
-
-.dashboard-form-message.success {
-    color: #344D3B;
-}
-
-.dashboard-form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 30px;
-    padding-top: 24px;
-    border-top: 1px solid #E8E8E1;
-}
-
-.dashboard-secondary-button {
-    min-height: 46px;
-    padding: 0 20px;
-    border: 1px solid #DDE0D7;
-    border-radius: 5px;
-    background: transparent;
-    color: #344D3B;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.dashboard-secondary-button:hover {
-    background: #F3F4EF;
-}
-
-.dashboard-primary-button:disabled,
-.dashboard-secondary-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-@media (max-width: 600px) {
-
-    .dashboard-product-form {
-        padding: 22px 18px;
-    }
-
-    .dashboard-form-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .dashboard-form-field-full {
-        grid-column: auto;
-    }
-
-    .dashboard-form-actions {
-        flex-direction: column-reverse;
-    }
-
-    .dashboard-form-actions button {
-        width: 100%;
-    }
-
-}
-
-/* =========================================
-   VIVERO — AÇÕES DOS PRODUTOS
-   ========================================= */
-
-.dashboard-product-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid #E8E8E1;
-}
-
-.dashboard-product-item:last-child {
-    border-bottom: none;
-}
-
-.dashboard-product-information {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex: 1;
-    min-width: 0;
-}
-
-.dashboard-product-information strong {
-    color: #344D3B;
-    font-size: 14px;
-}
-
-.dashboard-product-information span {
-    color: #85877E;
-    font-size: 12px;
-}
-
-.dashboard-product-item > strong {
-    color: #344D3B;
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-.dashboard-product-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.dashboard-edit-button {
-    min-height: 36px;
-    padding: 0 14px;
-    border: 1px solid #858B52;
-    border-radius: 4px;
-    background: transparent;
-    color: #344D3B;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.6px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.dashboard-edit-button:hover {
-    background: #F0F1E9;
-}
-
-@media (max-width: 600px) {
-
-    .dashboard-product-item {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .dashboard-product-information {
-        flex-basis: calc(100% - 100px);
-    }
-
-}
-
-/* BOTÃO DE EXCLUIR PRODUTO */
-
-.dashboard-delete-button {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid #E5D9D5;
-    border-radius: 8px;
-
-    background: transparent;
-    color: #B66A58;
-
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.dashboard-delete-button svg {
-    width: 17px;
-    height: 17px;
-}
-
-.dashboard-delete-button:hover {
-    background: #F8ECE9;
-    border-color: #B66A58;
-}
-
-/* BUSCA DE PRODUTOS */
-
-.dashboard-product-search {
-    width: 100%;
-    margin: 20px 0 20px 20px;
-}
-
-.dashboard-product-search input {
-    width: 100%;
-    max-width: 480px;
-    height: 46px;
-    padding: 0 16px;
-
-    border: 1px solid #E5E5DF;
-    border-radius: 8px;
-
-    background: #FFFFFF;
-    color: #344D3B;
-
-    font-family: inherit;
-    font-size: 14px;
-
-    outline: none;
-    transition: border-color 0.2s ease;
-}
-
-.dashboard-product-search input:focus {
-    border-color: #344D3B;
-}
-
-.dashboard-product-search input::placeholder {
-    color: #999990;
-}
-
-/* =========================================
-   VIVERO — GERENCIAMENTO DE IMAGENS
-   ========================================= */
-
-#dashboard-image-form input[type="file"] {
-    width: 100%;
-    padding: 14px;
-    border: 1px dashed #C9CEC5;
-    border-radius: 8px;
-    background: #FAFAF7;
-    color: #344D3B;
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-#dashboard-image-form input[type="file"]:hover {
-    border-color: #344D3B;
-}
-
-#dashboard-image-form select {
-    cursor: pointer;
-}
-
-.dashboard-image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 18px;
-    padding: 22px;
-}
-
-.dashboard-image-card {
-    overflow: hidden;
-    border: 1px solid #E5E5DF;
-    border-radius: 9px;
-    background: #FFFFFF;
-}
-
-.dashboard-image-card img {
-    display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    background: #F5F5F0;
-}
-
-.dashboard-image-information {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: 10px;
-    padding: 12px;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
-.dashboard-image-information span {
-    overflow: hidden;
-    color: #686B63;
-    font-size: 12px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+/* Celular: espaço oculto no computador */
+
+.dashboard-mobile-actions {
+    display: none;
 }
 
-.dashboard-image-delete {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid #E5D9D5;
-    border-radius: 7px;
-    background: transparent;
-    color: #B66A58;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
+/* Celular: ações depois de Configurações */
 
-.dashboard-image-delete:hover {
-    background: #F8ECE9;
-    border-color: #B66A58;
-}
+@media (max-width: 760px) {
 
-/* BUSCA DE PRODUTOS — GERENCIAMENTO DE IMAGENS */
+    .dashboard-mobile-actions {
+        display: block;
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+    }
 
-#image-product-search {
-    width: 100%;
-    height: 46px;
-    margin-bottom: 12px;
-    padding: 0 16px;
-    border: 1px solid #E5E5DF;
-    border-radius: 8px;
-    background: #FFFFFF;
-    color: #344D3B;
-    font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s ease;
-}
+    .dashboard-mobile-actions .dashboard-page-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
 
-#image-product-search:focus {
-    border-color: #344D3B;
-}
+    .dashboard-mobile-actions .dashboard-store-link,
+    .dashboard-mobile-actions .dashboard-logout-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 46px;
+        padding: 12px 16px;
+        border: 1px solid var(--forest);
+        border-radius: 5px;
+        background: var(--forest);
+        color: var(--white);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-align: center;
+        text-decoration: none;
+    }
 
-#image-product-search::placeholder {
-    color: #999990;
+    .dashboard-mobile-actions .dashboard-store-link:hover,
+    .dashboard-mobile-actions .dashboard-logout-button:hover {
+        background: var(--forest-dark);
+        color: var(--white);
+    }
+
 }

@@ -47,55 +47,57 @@
                     MENU PRINCIPAL
                 </span>
 
-                <a href="#visao-geral" class="dashboard-nav-link active">
+                <a href="#visao-geral" class="dashboard-nav-link active" aria-label="Visão geral" title="Visão geral">
                     <span class="dashboard-nav-icon">⌂</span>
                     Visão geral
                 </a>
 
-                <a href="#produtos" class="dashboard-nav-link">
+                <a href="#produtos" class="dashboard-nav-link" aria-label="Produtos" title="Produtos">
                     <span class="dashboard-nav-icon">▤</span>
                     Produtos
                 </a>
 
-                <a href="#imagens" class="dashboard-nav-link">
+                <a href="#imagens" class="dashboard-nav-link" aria-label="Imagens" title="Imagens">
                     <span class="dashboard-nav-icon">▧</span>
                     Imagens
                 </a>
 
-                <a href="#pedidos" class="dashboard-nav-link">
+                <a href="#pedidos" class="dashboard-nav-link" aria-label="Pedidos" title="Pedidos">
                     <span class="dashboard-nav-icon">▣</span>
                     Pedidos
                 </a>
-
 
                 <span class="dashboard-nav-label dashboard-nav-label-secondary">
                     OUTROS
                 </span>
 
-                <a href="#configuracoes" class="dashboard-nav-link">
+                <a href="#configuracoes" class="dashboard-nav-link" aria-label="Configurações" title="Configurações">
                     <span class="dashboard-nav-icon">⚙</span>
                     Configurações
                 </a>
 
             </nav>
 
+            <div class="dashboard-sidebar-footer" id="dashboard-sidebar-actions">
 
-            <div class="dashboard-sidebar-footer">
+                <div class="dashboard-page-actions" id="dashboard-page-actions">
 
-                <a href="index.html" class="dashboard-store-link">
-                    ↗ VISUALIZAR LOJA
-                </a>
+                    <a href="index.html" class="dashboard-store-link">
+                        ↗ VISUALIZAR LOJA
+                    </a>
 
-                <button
-                    type="button"
-                    id="admin-logout-button"
-                    class="dashboard-logout-button"
-                >
-                    ↪ SAIR DA CONTA
-                </button>
+                    <button
+                        type="button"
+                        id="admin-logout-button"
+                        class="dashboard-logout-button"
+                    >
+                        ↪ SAIR DA CONTA
+                    </button>
+
+                </div>
 
             </div>
-
+        
         </aside>
 
 
@@ -607,10 +609,107 @@
 
             </section>
 
-            <section id="pedidos" class="dashboard-placeholder">
-                <span>03 / VENDAS</span>
-                <h2>Pedidos</h2>
-                <p>Área de gerenciamento de pedidos.</p>
+            <section id="pedidos" class="dashboard-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span>03 / VENDAS</span>
+                        <h2>Pedidos</h2>
+                        <p>Acompanhe e gerencie os pedidos da VIVERO.</p>
+                    </div>
+                </div>
+
+                <div class="orders-toolbar">
+
+                    <div class="orders-search">
+                        <i data-lucide="search"></i>
+                        <input
+                            type="text"
+                            id="order-search"
+                            placeholder="Buscar por pedido ou cliente..."
+                        >
+                    </div>
+
+                    <div class="orders-filters">
+
+                        <button class="order-filter active" data-status="all">
+                            Todos
+                        </button>
+
+                        <button class="order-filter" data-status="pending">
+                            Pendentes
+                        </button>
+
+                        <button class="order-filter" data-status="processing">
+                            Em preparação
+                        </button>
+
+                        <button class="order-filter" data-status="shipped">
+                            Enviados
+                        </button>
+
+                        <button class="order-filter" data-status="delivered">
+                            Entregues
+                        </button>
+
+                        <button class="order-filter" data-status="cancelled">
+                            Cancelados
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="orders-list-container">
+
+                    <div class="orders-list-header">
+                        <span>Pedido</span>
+                        <span>Cliente</span>
+                        <span>Data</span>
+                        <span>Total</span>
+                        <span>Status</span>
+                        <span></span>
+                    </div>
+
+                    <div id="dashboard-order-list">
+
+                        <div class="orders-empty-state">
+                            <i data-lucide="shopping-bag"></i>
+                            <p>Nenhum pedido encontrado.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                
+                <div id="order-details-modal" class="order-modal" hidden>
+
+                    <div class="order-modal-content">
+
+                        <div class="order-modal-header">
+
+                            <div>
+                                <span>DETALHES DA VENDA</span>
+                                <h2>Pedido <strong id="order-modal-id"></strong></h2>
+                            </div>
+
+                            <button
+                                type="button"
+                                id="close-order-modal"
+                                class="order-modal-close"
+                                aria-label="Fechar"
+                            >
+                                <i data-lucide="x"></i>
+                            </button>
+
+                        </div>
+
+                        <div id="order-modal-body"></div>
+
+                    </div>
+
+                </div>
+
             </section>
 
             <section id="configuracoes" class="dashboard-placeholder">
@@ -619,6 +718,7 @@
                 <p>Área de configurações da loja.</p>
             </section>
 
+            <div class="dashboard-mobile-actions" id="dashboard-mobile-actions"></div>
 
             <footer class="dashboard-footer">
                 © 2026 VIVERO — PAINEL ADMINISTRATIVO.
